@@ -26,28 +26,39 @@
 function initCounter(name) {
   //   let strR = "%c red ", "background: red; color: #da8a55";
   //   let strG ="%c green ", "background: green; color: #bada55";
-  let color = `${name} green`;
+  let color = `green`;
   let innerCounter = function () {
     switch (color) {
-      case `${name} red`:
-        color = `${name} yellow`;
+      case `red`:
+        color = `yellow`;
         break;
-      case `${name} yellow`:
-        color = `${name} green`;
+      case `yellow`:
+        color = `green`;
         break;
       default:
-        color = `${name} red`;
+        color = `red`;
         break;
     }
-    return color;
+    let arr = {};
+    arr.name = name;
+    arr.color = color;
+    return arr;
   };
   return innerCounter;
 }
 let counter1 = initCounter("First"); // перший лічильник
-console.log(counter1()); // 1
+
+// console.log(counter1()); // 1
+
+let a = counter1();
+console.log(`%c ${a.name}: ${a.color}`, `background:${a.color}`);
 console.log(counter1());
 console.log(counter1());
 
 let counter2 = initCounter("Second"); // перший лічильник
 console.log(counter2());
 console.log(counter1());
+
+// let color = "red";
+// let n = "1";
+// console.log(`%c ${n}: ${color}`, `background:${color}`);

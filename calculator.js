@@ -4,12 +4,19 @@ let val2 = 0;
 let action = "";
 let result;
 
-function add() {
-  val1 = +document.getElementById("num").value;
-  action = "+";
+// let add = document.getElementById("add");
+// add.
+
+let acts = document.getElementsByClassName("action");
+for (let i = 0; i < acts.length; i++) {
+  acts[i].addEventListener("click", function () {
+    val1 = +document.getElementById("num").value;
+    action = acts[i].value;
+  });
 }
 
-function calc() {
+let calc = document.getElementById("calc");
+calc.addEventListener("click", function () {
   val2 = +document.getElementById("num").value;
   //   if (action == "+") {
   //     result = val1 + val2;
@@ -18,4 +25,4 @@ function calc() {
   let expr = val1 + action + val2;
   let result = eval(expr);
   document.getElementById("num").value = result;
-}
+});
